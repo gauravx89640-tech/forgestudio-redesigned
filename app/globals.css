@@ -1,0 +1,219 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Forge Studio Warm Editorial Theme */
+  --forge-dark: #0D0D0D;
+  --forge-lavender: #F4EFE7;
+  --forge-lavender-dark: #E7DCCF;
+  --forge-purple-overlay: #171717;
+  --forge-ink: #151515;
+  --forge-white: #FFFFFF;
+  --forge-muted: #EEE6DA;
+
+  --forge-purple-strong: #151515;
+  --forge-purple-medium: #6B6258;
+  --forge-purple-light: #D8CBB8;
+  --forge-purple-lighter: #F4EFE7;
+  --forge-divider: #D8CBB8;
+  --forge-gold: #C8A96E;
+
+  --background: #F4EFE7;
+  --foreground: #151515;
+  --card: #FBF7F0;
+  --card-foreground: #151515;
+  --popover: #FBF7F0;
+  --popover-foreground: #151515;
+  --primary: #111111;
+  --primary-foreground: #FFFFFF;
+  --secondary: #EEE6DA;
+  --secondary-foreground: #151515;
+  --muted: #EEE6DA;
+  --muted-foreground: #6B6258;
+  --accent: #D8CBB8;
+  --accent-foreground: #151515;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: rgba(21, 21, 21, 0.14);
+  --input: rgba(21, 21, 21, 0.14);
+  --ring: #111111;
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Forge custom colors */
+  --color-forge-dark: var(--forge-dark);
+  --color-forge-lavender: var(--forge-lavender);
+  --color-forge-lavender-dark: var(--forge-lavender-dark);
+  --color-forge-purple-overlay: var(--forge-purple-overlay);
+  --color-forge-ink: var(--forge-ink);
+  --color-forge-white: var(--forge-white);
+  --color-forge-muted: var(--forge-muted);
+  --color-forge-purple-strong: var(--forge-purple-strong);
+  --color-forge-purple-medium: var(--forge-purple-medium);
+  --color-forge-purple-light: var(--forge-purple-light);
+  --color-forge-purple-lighter: var(--forge-purple-lighter);
+  --color-forge-divider: var(--forge-divider);
+  --color-forge-gold: var(--forge-gold);
+}
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  @apply bg-background text-foreground;
+  overflow-x: hidden;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Ghost FORGE outline text */
+.forge-ghost-text {
+  -webkit-text-stroke: 2px rgba(255,255,255,0.35);
+  color: transparent;
+}
+
+/* Scroll reveal utility */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated background keyframes */
+@keyframes blob-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -15px) scale(1.05);
+  }
+  50% {
+    transform: translate(-10px, 20px) scale(0.95);
+  }
+  75% {
+    transform: translate(-20px, -10px) scale(1.02);
+  }
+}
+
+@keyframes mesh-shift {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateX(20px) translateY(15px);
+    opacity: 0.25;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    filter: blur(35px);
+  }
+  50% {
+    opacity: 0.9;
+    filter: blur(60px);
+  }
+}
+
+@keyframes float-accent {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+/* Animated background utilities */
+.animate-blob-drift {
+  animation: blob-drift 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-mesh-shift {
+  animation: mesh-shift 16s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 8s ease-in-out infinite;
+  will-change: opacity, filter;
+}
+
+.animate-float-accent {
+  animation: float-accent 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob-drift,
+  .animate-mesh-shift,
+  .animate-glow-pulse,
+  .animate-float-accent {
+    animation: none;
+  }
+}
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+}
+
+body {
+  @apply bg-background text-foreground;
+  overflow-x: clip;
+}
+
+#__next,
+main {
+  max-width: 100%;
+  overflow-x: clip;
+}
