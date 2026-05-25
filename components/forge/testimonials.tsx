@@ -6,22 +6,28 @@ import { AnimatedBg } from "./animated-bg"
 const testimonials = [
   {
     quote:
-      "Forge Studio built our site in under a week. We've had more enquiries in the last month than all of last year.",
-    author: "James R.",
-    company: "Iron & Oak Gym",
-  },
-  {
-    quote:
-      "I was worried it would be complicated but they made everything so easy. Our new site looks incredible.",
-    author: "Sarah M.",
-    company: "Bloom Bakery",
-  },
-  {
-    quote:
       "Finally a website I'm proud to show customers. Professional, fast and great value.",
     author: "Mila K.",
     company: "Mila Café",
   },
+  {
+  quote: "The site is doing great and Sun is very happy with the results. We have already noticed an increase in phone calls since the launch.",
+    author: "Darby Day",
+    company: "Sun's Nail Studio",
+  },
+  {
+    quote:
+      "I was worried it would be complicated but they made everything so easy. Our new site looks incredible.",
+    author: "Sarah Masner",
+    company: "Bloom Bakery",
+  },
+  {
+    quote:
+      "Forge Studio built our site in under a week. We've had more enquiries in the last month than all of last year.",
+    author: "James Rodriguez",
+    company: "Iron & Oak Gym",
+  },
+  
 ]
 
 export function Testimonials() {

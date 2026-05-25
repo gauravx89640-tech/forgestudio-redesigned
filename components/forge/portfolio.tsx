@@ -7,26 +7,37 @@ const projects = [
     name: "Bloom Bakery",
     category: "Bakery",
     url: "https://bloombakery.forgestudio.one",
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    name: "Iron & Oak Gym",
-    category: "Fitness",
-    url: "https://ironoak.forgestudio.one",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    name: "Mila Café",
-    category: "Café",
-    url: "https://milacafe.forgestudio.one",
-    image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=80",
+    image: "https://images.unsplash.com/photo-1583338917451-face2751d8d5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Velvet Nails",
     category: "Salon",
     url: "https://velvetnails.forgestudio.one",
-    image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=80",
+    image: "https://images.unsplash.com/photo-1652869119567-c1acee6e6d33?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
+  
+    {
+  name: "Sun's Nail Studio",
+  category: "Nail Salon",
+  url: "https://sunsnailstudio.com",
+  image: "https://www.sunsnailstudio.com/images/about-studio.webp",
+},
+  
+
+{
+    name: "Iron & Oak Gym",
+    category: "Fitness",
+    url: "https://ironoak.forgestudio.one",
+    image: "https://images.unsplash.com/photo-1637430308606-86576d8fef3c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    name: "Mila Café",
+    category: "Café",
+    url: "https://milacafe.forgestudio.one",
+    image: "https://images.unsplash.com/photo-1659624950451-8b8d89c00723?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  
+  
 ]
 
 export function Portfolio() {
@@ -54,13 +65,13 @@ export function Portfolio() {
         </h2>
 
         {/* Editorial grid - tall left + stacked right */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Tall card - left side, spans full height */}
           <a
             href={projects[0].url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative block aspect-[3/4] md:aspect-[4/5] rounded-2xl overflow-hidden"
+            className="group relative block aspect-[3/4] md:aspect-[3.96/6] rounded-2xl overflow-hidden"
           >
             <div
               className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-105"
@@ -79,34 +90,63 @@ export function Portfolio() {
             </div>
           </a>
 
-          {/* Right column - two stacked cards */}
-          <div className="flex flex-col gap-6">
-            {projects.slice(1).map((project) => (
-              <a
-                key={project.name}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block aspect-[16/10] rounded-2xl overflow-hidden"
-              >
-                <div
-                  className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-105"
-                  style={{ backgroundImage: `url('${project.image}')` }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
-                <div className="absolute top-3 left-3">
-                  <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-white/20 backdrop-blur-md text-[#151515]">
-                    {project.category}
-                  </span>
-                </div>
-                <div className="absolute bottom-5 left-6 right-6">
-                  <h3 className="font-serif text-[#F4EFE7] text-3xl md:text-4xl font-bold leading-tight">
-                    {project.name}
-                  </h3>
-                </div>
-              </a>
-            ))}
-          </div>
+         {/* Right column - stacked top cards + two-card bottom row */}
+<div className="flex flex-col gap-5">
+  {projects.slice(1, 3).map((project) => (
+    <a
+      key={project.name}
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative block aspect-[5.8/2.5] rounded-2xl overflow-hidden"
+    >
+      <div
+        className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-105"
+        style={{ backgroundImage: `url('${project.image}')` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-black/35 saturate-75 brightness-90 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
+      <div className="absolute top-3 left-3">
+        <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-white/20 backdrop-blur-md text-[#151515]">
+          {project.category}
+        </span>
+      </div>
+      <div className="absolute bottom-5 left-6 right-6">
+        <h3 className="font-serif text-[#F4EFE7] text-3xl md:text-4xl font-bold leading-tight">
+          {project.name}
+        </h3>
+      </div>
+    </a>
+  ))}
+
+  {/* Bottom row: Sun Snail + Velvet Nails */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    {projects.slice(3, 5).map((project) => (
+      <a
+        key={project.name}
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative block aspect-[3/3.7] rounded-2xl overflow-hidden"
+      >
+        <div
+          className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-105"
+          style={{ backgroundImage: `url('${project.image}')` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
+        <div className="absolute top-3 left-3">
+          <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-white/20 backdrop-blur-md text-[#151515]">
+            {project.category}
+          </span>
+        </div>
+        <div className="absolute bottom-5 left-5 right-5">
+          <h3 className="font-serif text-[#F4EFE7] text-2xl md:text-3xl font-bold leading-tight">
+            {project.name}
+          </h3>
+        </div>
+      </a>
+    ))}
+  </div>
+</div>
         </div>
       </div>
     </section>
