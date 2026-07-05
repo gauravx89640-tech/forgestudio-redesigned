@@ -1,21 +1,35 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
-  { label: "Work", href: "#portfolio" },
-  { label: "Process", href: "#process" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#why-us" },
+  { label: "Work", href: "/portfolio" },
+  { label: "Process", href: "/#process" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "About", href: "/#why-us" },
 ]
 
 export function Navbar() {
+  const pathname = usePathname()
   const [hidden, setHidden] = useState(false)
   const [lastY, setLastY] = useState(0)
   const [active, setActive] = useState("")
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  // Reset click-based active state on route change, and drop it entirely
+  // once we've left the homepage (hash links only make sense there).
+  useEffect(() => {
+    setActive("")
+  }, [pathname])
+
+  const isActive = (link: { label: string; href: string }) => {
+    if (link.href === "/portfolio") return pathname === "/portfolio"
+    if (pathname !== "/") return false
+    return active === link.label
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +69,7 @@ export function Navbar() {
           aria-label="Main navigation"
         >
           <a
-            href="#"
+            href="/"
             className="font-serif text-sm font-bold tracking-tight text-forge-ink mr-2 px-3 py-1"
           >
             FORGE
@@ -67,7 +81,7 @@ export function Navbar() {
               href={link.href}
               onClick={() => setActive(link.label)}
               className={`px-3 py-1.5 rounded-full text-sm font-sans font-medium transition-all duration-200 ${
-                active === link.label
+                isActive(link)
                   ? "bg-forge-ink text-white"
                   : "text-forge-ink/70 hover:text-forge-ink"
               }`}
@@ -77,7 +91,7 @@ export function Navbar() {
           ))}
 
           <a
-            href="#contact"
+            href="/#contact"
             className="ml-2 px-4 py-1.5 rounded-full text-sm font-sans font-semibold bg-forge-ink text-white hover:bg-forge-ink/85 transition-colors duration-200"
           >
             Get a Quote
@@ -96,12 +110,12 @@ export function Navbar() {
               boxShadow: "0 2px 24px rgba(0,0,0,0.12)",
             }}
           >
-            <a href="#" className="font-serif text-base font-bold tracking-tight text-forge-ink">
+            <a href="/" className="font-serif text-base font-bold tracking-tight text-forge-ink">
               FORGE
             </a>
             <div className="flex items-center gap-2">
               <a
-                href="#contact"
+                href="/#contact"
                 className="px-3 py-1 rounded-full text-xs font-sans font-semibold bg-forge-ink text-white"
               >
                 Get a Quote

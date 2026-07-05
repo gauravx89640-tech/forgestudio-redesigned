@@ -4,40 +4,35 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 const projects = [
   {
-    name: "Bloom Bakery",
+    name: "Lumière Med Spa",
+    category: "Med Spa",
+    url: "https://lumiere.forgestudio.one",
+    image: "/images/portfolio/lumiere.avif",
+  },
+  {
+    name: "Sun's Nail Studio",
+    category: "Nail Salon",
+    url: "https://sunsnailstudio.com",
+    image: "/images/portfolio/suns-nail-studio.jpg",
+  },
+  {
+    name: "Sweet Arleen's",
     category: "Bakery",
-    url: "https://bloombakery.forgestudio.one",
-    image: "https://images.unsplash.com/photo-1583338917451-face2751d8d5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    url: "https://sweetarleens.forgestudio.one",
+    image: "/images/portfolio/sweet-arleens.jpg",
   },
   {
-    name: "Velvet Nails",
-    category: "Salon",
-    url: "https://velvetnails.forgestudio.one",
-    image: "https://images.unsplash.com/photo-1652869119567-c1acee6e6d33?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  
-    {
-  name: "Sun's Nail Studio",
-  category: "Nail Salon",
-  url: "https://sunsnailstudio.com",
-  image: "https://www.sunsnailstudio.com/images/about-studio.webp",
-},
-  
-
-{
-    name: "Iron & Oak Gym",
-    category: "Fitness",
-    url: "https://ironoak.forgestudio.one",
-    image: "https://images.unsplash.com/photo-1637430308606-86576d8fef3c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Yobejon Beauty",
+    category: "Nail Salon",
+    url: "https://yobejon.forgestudio.one",
+    image: "/images/portfolio/yobejon.jpg",
   },
   {
-    name: "Mila Café",
-    category: "Café",
-    url: "https://milacafe.forgestudio.one",
-    image: "https://images.unsplash.com/photo-1659624950451-8b8d89c00723?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Bake Me Happy",
+    category: "Bakery",
+    url: "https://bakemehappy.forgestudio.one",
+    image: "/images/portfolio/bake-me-happy.jpg",
   },
-  
-  
 ]
 
 export function Portfolio() {
@@ -57,12 +52,20 @@ export function Portfolio() {
         </p>
 
         {/* Heading */}
-        <h2
-          id="portfolio-heading"
-          className="font-serif text-5xl md:text-7xl font-bold text-forge-purple-strong mb-12 text-balance"
-        >
-          Our Recent Work
-        </h2>
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+          <h2
+            id="portfolio-heading"
+            className="font-serif text-5xl md:text-7xl font-bold text-forge-purple-strong text-balance"
+          >
+            Our Recent Work
+          </h2>
+          <a
+            href="/portfolio"
+            className="shrink-0 px-6 py-2.5 rounded-full font-sans font-semibold text-sm border border-forge-purple-strong text-forge-purple-strong hover:bg-forge-purple-strong hover:text-white transition-colors duration-200"
+          >
+            View All Projects
+          </a>
+        </div>
 
         {/* Editorial grid - tall left + stacked right */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -79,7 +82,7 @@ export function Portfolio() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
             <div className="absolute top-3 left-3">
-              <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-white/20 backdrop-blur-md text-[#151515]">
+              <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
                 {projects[0].category}
               </span>
             </div>
@@ -106,7 +109,7 @@ export function Portfolio() {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-black/35 saturate-75 brightness-90 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
       <div className="absolute top-3 left-3">
-        <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-white/20 backdrop-blur-md text-[#151515]">
+        <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
           {project.category}
         </span>
       </div>
@@ -134,7 +137,7 @@ export function Portfolio() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
         <div className="absolute top-3 left-3">
-          <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-white/20 backdrop-blur-md text-[#151515]">
+          <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
             {project.category}
           </span>
         </div>
