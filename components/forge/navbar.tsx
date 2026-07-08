@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
-  { label: "Work", href: "#portfolio" },
+  { label: "Work", href: "/portfolio" },
   { label: "Process", href: "#process" },
   { label: "Pricing", href: "#pricing" },
   { label: "About", href: "#why-us" },
@@ -55,7 +55,7 @@ export function Navbar() {
           aria-label="Main navigation"
         >
           <a
-            href="#"
+            href="/"
             className="font-serif text-sm font-bold tracking-tight text-forge-ink mr-2 px-3 py-1"
           >
             FORGE
@@ -96,7 +96,7 @@ export function Navbar() {
               boxShadow: "0 2px 24px rgba(0,0,0,0.12)",
             }}
           >
-            <a href="#" className="font-serif text-base font-bold tracking-tight text-forge-ink">
+            <a href="/" className="font-serif text-base font-bold tracking-tight text-forge-ink">
               FORGE
             </a>
             <div className="flex items-center gap-2">
