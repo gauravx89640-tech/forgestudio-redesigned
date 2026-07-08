@@ -18,7 +18,7 @@ const plans = [
   },
   {
     name: "Business",
-    price: "$849",
+    price: "$899",
     featured: true,
     badge: "Most Popular",
     features: [

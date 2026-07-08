@@ -22,7 +22,7 @@ export function Footer() {
       {/* Columns */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 pb-10 grid grid-cols-1 sm:grid-cols-3 gap-10">
         <div>
-          <p className="font-sans text-xs tracking-[0.2em] uppercase text-white/40 mb-4">
+          <p className="font-sans text-xs tracking-[0.2em] uppercase text-white/50 mb-4">
             Need Help?
           </p>
           <ul className="flex flex-col gap-2.5">
@@ -40,7 +40,7 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="font-sans text-xs tracking-[0.2em] uppercase text-white/40 mb-4">
+          <p className="font-sans text-xs tracking-[0.2em] uppercase text-white/50 mb-4">
             Information
           </p>
           <ul className="flex flex-col gap-2.5">
@@ -58,7 +58,7 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="font-sans text-xs tracking-[0.2em] uppercase text-white/40 mb-4">
+          <p className="font-sans text-xs tracking-[0.2em] uppercase text-white/50 mb-4">
             Contact
           </p>
           <a
@@ -72,7 +72,7 @@ export function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-white/8 py-5 px-6 md:px-12">
-        <p className="font-sans text-xs text-white/30 text-center">
+        <p className="font-sans text-xs text-white/45 text-center">
           © 2026 Forge Studio. All rights reserved.
         </p>
       </div>

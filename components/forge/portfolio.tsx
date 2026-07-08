@@ -31,7 +31,7 @@ const projects = [
     name: "Bake Me Happy",
     category: "Bakery",
     url: "https://bakemehappy.forgestudio.one",
-    image: "/images/portfolio/bake-me-happy.png",
+    image: "/images/portfolio/bake-me-happy.jpg",
   },
 ]
 
@@ -82,7 +82,7 @@ export function Portfolio() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
             <div className="absolute top-3 left-3">
-              <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-white/20 backdrop-blur-md text-[#151515]">
+              <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
                 {projects[0].category}
               </span>
             </div>
@@ -109,7 +109,7 @@ export function Portfolio() {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-black/35 saturate-75 brightness-90 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
       <div className="absolute top-3 left-3">
-        <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-white/20 backdrop-blur-md text-[#151515]">
+        <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
           {project.category}
         </span>
       </div>
@@ -137,7 +137,7 @@ export function Portfolio() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
         <div className="absolute top-3 left-3">
-          <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-white/20 backdrop-blur-md text-[#151515]">
+          <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
             {project.category}
           </span>
         </div>
