@@ -64,6 +64,7 @@ export function Faq() {
     <section
       ref={ref}
       className="scroll-reveal w-full bg-forge-lavender py-20 px-6 md:px-12"
+      id="faq"
       aria-labelledby="faq-heading"
     >
       <div className="max-w-2xl mx-auto">

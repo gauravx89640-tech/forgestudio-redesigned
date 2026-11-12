@@ -2,7 +2,21 @@
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
-const projects = [
+const projects: { name: string; category: string; url: string; image: string; concept?: boolean; live?: boolean }[] = [
+  {
+    name: "Maui Girl Nails",
+    category: "Nail Salon",
+    url: "https://mauigirlnails.pages.dev",
+    image: "/images/portfolio/maui-girl-nails.jpg",
+    concept: true,
+  },
+  {
+    name: "Victoria's Nail Secrets",
+    category: "Nail Artist",
+    url: "https://victoriasnailsecrets.pages.dev",
+    image: "/images/portfolio/victorias-nail-secrets.jpg",
+    concept: true,
+  },
   {
     name: "Lumière Med Spa",
     category: "Med Spa",
@@ -14,12 +28,14 @@ const projects = [
     category: "Nail Salon",
     url: "/work/suns-nail-studio",
     image: "/images/portfolio/suns-nail-studio.jpg",
+    live: true,
   },
   {
-    name: "Sweet Arleen's",
-    category: "Bakery",
-    url: "https://sweetarleens.forgestudio.one",
-    image: "/images/portfolio/sweet-arleens.jpg",
+    name: "Mary Jesse Skin + Scalp Studio",
+    category: "Esthetics",
+    url: "https://maryjesseskinandscalp.com",
+    image: "/images/portfolio/mary-jesse.jpg",
+    live: true,
   },
   {
     name: "Yobejon Beauty",
@@ -74,6 +90,7 @@ export function Portfolio() {
             href={projects[0].url}
             target="_blank"
             rel="noopener noreferrer"
+      data-cursor="view"
             className="group relative block aspect-[3/4] md:aspect-[3.96/6] rounded-2xl overflow-hidden"
           >
             <div
@@ -83,7 +100,7 @@ export function Portfolio() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
             <div className="absolute top-3 left-3">
               <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
-                {projects[0].category}
+                {projects[0].category}{projects[0].concept && " · Concept"}{projects[0].live && " · Live client"}
               </span>
             </div>
             <div className="absolute bottom-6 left-6 right-6">
@@ -101,7 +118,8 @@ export function Portfolio() {
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative block aspect-[5.8/2.5] rounded-2xl overflow-hidden"
+      data-cursor="view"
+      className="group relative block aspect-[4/3] sm:aspect-[5.8/2.5] rounded-2xl overflow-hidden"
     >
       <div
         className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-105"
@@ -110,7 +128,7 @@ export function Portfolio() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-black/35 saturate-75 brightness-90 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
       <div className="absolute top-3 left-3">
         <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
-          {project.category}
+          {project.category}{project.concept && " · Concept"}{project.live && " · Live client"}
         </span>
       </div>
       <div className="absolute bottom-5 left-6 right-6">
@@ -129,6 +147,7 @@ export function Portfolio() {
         href={project.url}
         target="_blank"
         rel="noopener noreferrer"
+      data-cursor="view"
         className="group relative block aspect-[3/3.7] rounded-2xl overflow-hidden"
       >
         <div
@@ -138,7 +157,7 @@ export function Portfolio() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
         <div className="absolute top-3 left-3">
           <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
-            {project.category}
+            {project.category}{project.concept && " · Concept"}{project.live && " · Live client"}
           </span>
         </div>
         <div className="absolute bottom-5 left-5 right-5">

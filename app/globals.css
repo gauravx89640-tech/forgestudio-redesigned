@@ -1,6 +1,10 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* Scan these folders explicitly (Next.js may infer a parent folder as the project root). */
+@source "../app";
+@source "../components";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -111,27 +115,13 @@ body {
   color: transparent;
 }
 
-/* Scroll reveal utility */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.scroll-reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Scroll reveal utility.
+   FAILS OPEN: every "start hidden" rule lives inside @media (prefers-reduced-motion:
+   no-preference), so reduced-motion visitors get the finished page; a <noscript> style
+   in layout.tsx shows everything when JS is off; use-scroll-reveal.ts reveals anyway
+   if IntersectionObserver fails, and after 8s regardless. */
 
 /* Staggered card reveal, gated by parent .scroll-reveal.visible */
-.project-card {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.scroll-reveal.visible .project-card {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* Animated background keyframes */
 @keyframes blob-drift {
@@ -227,4 +217,86 @@ body {
 main {
   max-width: 100%;
   overflow-x: clip;
+}
+/* ---------- Motion layer ---------- */
+
+/* Section headings rise out of a mask when their section scrolls in */
+
+/* Hero intro: photo settles from a slight zoom, FORGE letters rise from their masks,
+   then the headline block rises. Transform only on the photo (it is the LCP element). */
+@keyframes hero-settle {
+  from { transform: scale(1.12); }
+  to { transform: scale(1); }
+}
+@keyframes letter-rise {
+  from { transform: translateY(105%); }
+  to { transform: translateY(0); }
+}
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Underline that draws in from the left */
+.link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s;
+}
+.link-draw:hover,
+.link-draw:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Marquee pauses while hovered */
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* All reveal/intro motion, only for visitors who haven't asked for reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .project-card {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .scroll-reveal.visible .project-card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .scroll-reveal h2 {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(40%);
+    transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+  }
+  .scroll-reveal.visible h2 {
+    clip-path: inset(0 0 -20% 0);
+    transform: translateY(0);
+  }
+  .animate-hero-settle {
+    animation: hero-settle 2.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .letter-rise {
+    animation: letter-rise 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .hero-rise {
+    animation: hero-rise 0.8s ease-out 0.4s both;
+  }
 }

@@ -14,7 +14,27 @@ const projects: {
   url: string
   image: string
   blurb: string
+  concept?: boolean
+  live?: boolean
 }[] = [
+  {
+    name: "Maui Girl Nails",
+    category: "Nail Salon",
+    group: "Beauty & Wellness",
+    url: "https://mauigirlnails.pages.dev",
+    image: "/images/portfolio/maui-girl-nails.jpg",
+    blurb: "One-artist studio site with Vagaro booking and a tap-a-color gallery of her sets",
+    concept: true,
+  },
+  {
+    name: "Victoria's Nail Secrets",
+    category: "Nail Artist",
+    group: "Beauty & Wellness",
+    url: "https://victoriasnailsecrets.pages.dev",
+    image: "/images/portfolio/victorias-nail-secrets.jpg",
+    blurb: "Dark, editorial site for a custom acrylic artist, built around DM booking",
+    concept: true,
+  },
   {
     name: "Lumière Med Spa",
     category: "Med Spa",
@@ -30,14 +50,16 @@ const projects: {
     url: "/work/suns-nail-studio",
     image: "/images/portfolio/suns-nail-studio.jpg",
     blurb: "Appointment-first design for a solo studio, no front desk needed",
+    live: true,
   },
   {
-    name: "Sweet Arleen's",
-    category: "Bakery",
-    group: "Food",
-    url: "https://sweetarleens.forgestudio.one",
-    image: "/images/portfolio/sweet-arleens.jpg",
-    blurb: "Custom-order flow built around a 3× Cupcake Wars story",
+    name: "Mary Jesse Skin + Scalp Studio",
+    category: "Esthetics",
+    group: "Beauty & Wellness",
+    url: "https://maryjesseskinandscalp.com",
+    image: "/images/portfolio/mary-jesse.jpg",
+    blurb: "Boutique esthetics studio in Arvada, CO — facials and Japanese Head Spa, with online booking",
+    live: true,
   },
   {
     name: "Yobejon Beauty",
@@ -170,6 +192,7 @@ export function PortfolioGrid() {
             <a
               key={project.name}
               href={project.url}
+              data-cursor="view"
               target="_blank"
               rel="noopener noreferrer"
               className="project-card group relative block w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] aspect-[3/2] sm:aspect-[4/5] rounded-2xl overflow-hidden"
@@ -182,7 +205,7 @@ export function PortfolioGrid() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
               <div className="absolute top-3 left-3">
                 <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
-                  {project.category}
+                  {project.category}{project.concept && " · Concept"}{project.live && " · Live client"}
                 </span>
               </div>
               <div className="absolute top-3 right-3 flex items-center gap-1 text-white font-sans text-xs font-semibold opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">

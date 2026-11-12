@@ -1,7 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
-
 export function Hero() {
   return (
     <section
@@ -10,7 +8,7 @@ export function Hero() {
 >
       {/* Background image */}
       <div
-        className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+        className="absolute inset-0 bg-center bg-cover bg-no-repeat animate-hero-settle"
        style={{
   backgroundImage: "url('/images/hero6.jpg')",
 }}
@@ -37,28 +35,28 @@ export function Hero() {
 
       {/* Center content */}
       <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-4">
-        <motion.h1
+        <h1
           className="font-serif text-[#FBF7F0] text-center leading-none select-none"
           style={{
             fontSize: "clamp(80px, 20vw, 260px)",
             textShadow: "0 4px 32px rgba(0,0,0,0.4)",
             letterSpacing: "-0.02em",
           }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+          aria-label="FORGE"
         >
-          FORGE
-        </motion.h1>
+          {/* Each letter rises from behind its own mask, one after another (CSS, fails open) */}
+          {"FORGE".split("").map((letter, i) => (
+            <span key={i} aria-hidden="true" className="inline-block overflow-hidden align-bottom pb-[0.04em]">
+              <span className="inline-block letter-rise" style={{ animationDelay: `${0.15 + i * 0.08}s` }}>
+                {letter}
+              </span>
+            </span>
+          ))}
+        </h1>
       </div>
 
       {/* Bottom CTA */}
-      <motion.div
-        className="relative z-10 flex flex-col items-start px-8 pb-20 md:px-16 max-w-2xl"
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-      >
+      <div className="hero-rise relative z-10 flex flex-col items-start px-8 pb-20 md:px-16 max-w-2xl">
         <h2 className="font-serif text-[#FBF7F0] text-2xl md:text-3xl leading-snug text-pretty mb-3">
           We build websites that work as hard as you do.
         </h2>
@@ -79,7 +77,7 @@ export function Hero() {
             Get a Free Quote
           </a>
         </div>
-      </motion.div>
+      </div>
 
       {/* Marquee strip */}
 <div

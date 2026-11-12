@@ -26,11 +26,15 @@ export function Footer() {
             Need Help?
           </p>
           <ul className="flex flex-col gap-2.5">
-            {["Contact Us", "FAQ", "How It Works"].map((item) => (
+            {[
+              ["Contact Us", "/#contact"],
+              ["FAQ", "/#faq"],
+              ["How It Works", "/#process"],
+            ].map(([item, href]) => (
               <li key={item}>
                 <a
-                  href="#"
-                  className="font-sans text-sm text-white/60 hover:text-white transition-colors"
+                  href={href}
+                  className="link-draw font-sans text-sm text-white/60 hover:text-white transition-colors"
                 >
                   {item}
                 </a>
@@ -44,11 +48,16 @@ export function Footer() {
             Information
           </p>
           <ul className="flex flex-col gap-2.5">
-            {["About Us", "Pricing", "Privacy Policy"].map((item) => (
+            {[
+              ["About Us", "/#why-us"],
+              ["Pricing", "/#pricing"],
+              ["Privacy Policy", "/privacy"],
+              ["Terms of Service", "/terms"],
+            ].map(([item, href]) => (
               <li key={item}>
                 <a
-                  href="#"
-                  className="font-sans text-sm text-white/60 hover:text-white transition-colors"
+                  href={href}
+                  className="link-draw font-sans text-sm text-white/60 hover:text-white transition-colors"
                 >
                   {item}
                 </a>
@@ -63,7 +72,7 @@ export function Footer() {
           </p>
           <a
             href="mailto:hello@forgestudio.one"
-            className="font-sans text-sm text-white/60 hover:text-white transition-colors"
+            className="link-draw font-sans text-sm text-white/60 hover:text-white transition-colors"
           >
             hello@forgestudio.one
           </a>
