@@ -7,7 +7,7 @@ import { Check } from "lucide-react"
 const plans = [
   {
     name: "Starter",
-    price: "$499",
+    price: "$549",
     featured: false,
     features: [
       "1 page",

@@ -61,7 +61,7 @@ export function Hero() {
           We build websites that work as hard as you do.
         </h2>
         <p className="font-sans text-white text-sm md:text-base leading-relaxed mb-6">
-          The last website you'll ever need to think about. Built for cafés, bakeries, salons and local businesses — starting from $499.
+          The last website you'll ever need to think about. Built for cafés, bakeries, salons and local businesses — starting from $549.
         </p>
         <div className="flex flex-wrap gap-3">
           <a
@@ -91,7 +91,7 @@ export function Hero() {
         key={i}
         className="font-sans text-xs font-semibold tracking-[0.22em] uppercase text-white/75 mx-8"
       >
-        Bloom Bakery · Iron &amp; Oak Gym · Mila Café · Web Design · Fast Delivery · From $499 ·&nbsp;
+        Bloom Bakery · Iron &amp; Oak Gym · Mila Café · Web Design · Fast Delivery · From $549 ·&nbsp;
       </span>
     ))}
   </div>

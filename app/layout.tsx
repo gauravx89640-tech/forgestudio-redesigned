@@ -22,7 +22,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Forge Studio — Web Design for Local Businesses',
-  description: 'Clean, modern websites for cafés, bakeries, gyms and local businesses — starting from $499. Built fast, built to convert.',
+  description: 'Clean, modern websites for cafés, bakeries, gyms and local businesses — starting from $549. Built fast, built to convert.',
   generator: 'v0.app',
 }
 
