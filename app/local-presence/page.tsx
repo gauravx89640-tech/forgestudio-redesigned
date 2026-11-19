@@ -19,21 +19,36 @@ export const metadata: Metadata = {
 }
 
 const SAMPLE_WEEK = "/?interest=local-presence#contact"
+const GOOGLE_TIPS = "https://support.google.com/business/answer/7091"
 const GOOGLE_GUIDE = "https://support.google.com/business/answer/7163406"
 
-const google = [
-  "Up to four posts a month, made from your own photos",
-  "Photo updates",
-  "Replies to your reviews, drafted by me and approved by you",
-  "Your hours and details kept right",
-  "A monthly report of your numbers",
+// Copy is final (Local Presence brief, 19 Nov 2026). The photo-batch, weekly-review and
+// monthly-recommendation items are in docs/pricing.md as of 2026-11-19, so they are published.
+type Item = [lead: string, rest: string]
+
+const google: Item[] = [
+  ["Setup in your first week:", "a full review of your profile — categories, services and prices, description, hours, holiday hours, booking link and attributes — with every gap fixed. Your starting numbers are recorded before anything changes."],
+  ["Up to 4 posts a month,", "written from your own photos: a recent set or style, a service you want booked, an opening in your week, your holiday hours."],
+  ["Up to 2 photo batches a month,", "so the newest picture on your profile is always a recent one."],
+  ["Reviews checked every week.", "A reply is drafted for every new review, five-star or critical, sent to you, and posted only once you approve it."],
+  ["Details kept current:", "services and prices, hours, holiday hours, booking link and description, updated whenever something changes."],
+  ["A monthly report:", "profile views, calls, website clicks, direction requests and bookings, each compared with the month before."],
+  ["One recommendation a month:", "the single change most worth making next, such as a photo to take or a service to feature."],
 ]
-const yelp = [
-  "A monthly batch of photos",
-  "Your page's text and details kept right",
-  "Holiday hours kept right",
-  "Review replies written by me and posted by you",
-  "A monthly report of your numbers",
+
+const yelp: Item[] = [
+  ["Setup in your first week:", "a full review of your page — description, specialties, services, hours, holiday hours, links and booking information — with every gap fixed. Your starting numbers are recorded before anything changes."],
+  ["Up to 2 photo batches a month,", "each photo captioned with the service it shows."],
+  ["Reviews checked every week.", "A reply is written for every new review, ready for you to post from your own account, because Yelp shows the name of whoever posts it."],
+  ["Details kept current:", "description, specialties, hours, holiday hours and links, updated whenever something changes."],
+  ["A monthly report", "of the numbers Yelp gives you, each compared with the month before."],
+  ["One recommendation a month.", ""],
+]
+
+const why = [
+  "Google's own advice: businesses with complete and accurate information are more likely to show up in local search results.",
+  "Google also says that replying to reviews shows you value your clients' feedback, and that helpful replies can help a business stand out.",
+  "An answered review, glowing or critical, tells the next person reading that someone is paying attention.",
 ]
 
 const steps = [
@@ -49,6 +64,25 @@ const faqs = [
   ["What isn't included?", "Changes to your website, ad accounts, booking system setup, other platforms and blog posts."],
   ["What happens if I cancel?", "Give me 30 days' notice. I'll hand everything back and remove my access within 7 business days of the service ending."],
 ]
+
+function Included({ title, price, items }: { title: string; price: string; items: Item[] }) {
+  return (
+    <div className="reveal">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 pb-4">
+        <h3 className="s-h3">{title}</h3>
+        <p className="text-sm text-[var(--s-muted)] whitespace-nowrap">{price}</p>
+      </div>
+      <ul className="s-check border-t border-[var(--s-hair)]">
+        {items.map(([lead, rest]) => (
+          <li key={lead}>
+            <strong className="font-semibold">{lead}</strong>
+            {rest && <span className="text-[var(--s-muted)]"> {rest}</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export default function LocalPresencePage() {
   return (
@@ -68,33 +102,54 @@ export default function LocalPresencePage() {
               <p className="s-lede">
                 For beauty pros who would rather be with clients than updating listings. You stay the owner. I keep your pages active and accurate.
               </p>
-              <a href={SAMPLE_WEEK} className="s-btn s-btn-solid mt-6">Ask for a sample week</a>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-4 mt-6">
+                <a href={SAMPLE_WEEK} className="s-btn s-btn-solid">Ask for a sample week</a>
+                <a href="#price" className="s-textlink text-sm">From $125 a month</a>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* What I do each month */}
-        <section className="s-wrap s-section s-rule" aria-labelledby="do-h2">
-          <h2 id="do-h2" className="s-h2 mb-12 md:mb-16">What I do each month</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-            {[
-              ["Google Business Profile", google],
-              ["Yelp", yelp],
-            ].map(([title, items]) => (
-              <div key={title as string} className="reveal">
-                <h3 className="s-h3 pb-4">{title as string}</h3>
-                <ul className="s-check border-t border-[var(--s-hair)]">
-                  {(items as string[]).map((i) => (
-                    <li key={i}>{i}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+        {/* How it brings you more leads */}
+        <section className="s-wrap s-section s-rule" aria-labelledby="leads-h2">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-5 reveal">
+              <h2 id="leads-h2" className="s-h2 mb-6">How it brings you more leads</h2>
+              <p className="s-body md:text-lg md:leading-relaxed text-[var(--s-ink)]">
+                An active, accurate profile with answered reviews gives more of the people who find you a reason to get in touch. Here&apos;s why:
+              </p>
+            </div>
+            <div className="md:col-span-6 md:col-start-7 reveal">
+              <ol className="flex flex-col">
+                {why.map((w, i) => (
+                  <li key={i} className="s-cell pb-6 flex gap-5">
+                    <span className="s-num pt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="s-body text-[var(--s-ink)]">{w}</span>
+                  </li>
+                ))}
+              </ol>
+              <a href={GOOGLE_TIPS} target="_blank" rel="noopener noreferrer" className="s-textlink text-sm">
+                Google&apos;s tips for your Business Profile
+              </a>
+            </div>
           </div>
         </section>
 
+        {/* What's included: the centre of the page */}
+        <section id="included" className="s-wrap s-section s-rule" aria-labelledby="inc-h2">
+          <h2 id="inc-h2" className="s-h2 mb-12 md:mb-16">What&apos;s included</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-14">
+            <Included title="Google Business Profile" price="$125 a month" items={google} />
+            <Included title="Yelp" price="$125 a month" items={yelp} />
+          </div>
+          <p className="reveal mt-12 border border-[var(--s-hair)] bg-[#fffdfa] px-6 py-5 text-[15px] leading-relaxed">
+            <strong className="font-semibold">Both platforms — $250 a month:</strong>{" "}
+            <span className="text-[var(--s-muted)]">everything above, with one combined monthly report.</span>
+          </p>
+        </section>
+
         {/* Price */}
-        <section className="s-wrap s-section s-rule" aria-labelledby="price-h2">
+        <section id="price" className="s-wrap s-section s-rule scroll-mt-16" aria-labelledby="price-h2">
           <h2 id="price-h2" className="s-h2 mb-12 md:mb-16">Price</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
             {[
@@ -129,17 +184,21 @@ export default function LocalPresencePage() {
           <a href={SAMPLE_WEEK} className="s-btn s-btn-solid mt-12">Ask for a sample week</a>
         </section>
 
-        {/* What I won't promise, and proof */}
+        {/* What I won't promise */}
         <section className="s-wrap s-section s-rule" aria-labelledby="promise-h2">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <h2 id="promise-h2" className="s-h2 md:col-span-5 reveal">What I won&apos;t promise</h2>
             <p className="s-body md:col-span-6 md:col-start-7 md:text-lg md:leading-relaxed reveal">
-              Nobody can promise you a spot on Google, and I won&apos;t. Google decides the order of its results. What I can do is keep your profile active and accurate, and show you your own numbers every month.
+              Nobody can promise you a spot on Google or an exact number of new clients, and I won&apos;t. Google decides the order of its results. What I can do is keep your profile active and accurate, and show you your own numbers every month.
             </p>
           </div>
-          <div className="s-plate reveal mt-16 md:mt-24 px-6 py-10 md:px-16 md:py-14">
-            <p className="s-eyebrow mb-4">Proof</p>
-            <p className="s-quote">I manage the Yelp page for Sun&apos;s Nail Studio in Wilmington.</p>
+
+          {/* Who looks after it */}
+          <div className="s-plate reveal mt-16 md:mt-24 px-6 py-10 md:px-16 md:py-14 grid grid-cols-1 md:grid-cols-12 gap-6">
+            <h2 className="s-eyebrow md:col-span-3 pt-2">Who looks after it</h2>
+            <p className="s-quote text-[clamp(24px,3vw,40px)] md:col-span-9">
+              My websites for beauty studios are live in North Carolina and Colorado. Every month I also look after the Yelp page for Sun&apos;s Nail Studio in Wilmington: new photos, current details and holiday hours, and review replies.
+            </p>
           </div>
         </section>
 
