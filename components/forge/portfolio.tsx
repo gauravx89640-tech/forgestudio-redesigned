@@ -2,34 +2,8 @@
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
-const projects: { name: string; category: string; url: string; image: string; concept?: boolean; live?: boolean }[] = [
-  {
-    name: "Maui Girl Nails",
-    category: "Nail Salon",
-    url: "https://mauigirlnails.pages.dev",
-    image: "/images/portfolio/maui-girl-nails.jpg",
-    concept: true,
-  },
-  {
-    name: "Victoria's Nail Secrets",
-    category: "Nail Artist",
-    url: "https://victoriasnailsecrets.pages.dev",
-    image: "/images/portfolio/victorias-nail-secrets.jpg",
-    concept: true,
-  },
-  {
-    name: "Lumière Med Spa",
-    category: "Med Spa",
-    url: "https://lumiere.forgestudio.one",
-    image: "/images/portfolio/lumiere.avif",
-  },
-  {
-    name: "Sun's Nail Studio",
-    category: "Nail Salon",
-    url: "/work/suns-nail-studio",
-    image: "/images/portfolio/suns-nail-studio.jpg",
-    live: true,
-  },
+// Homepage shows three items. Sun's Nail Studio stays on /portfolio only (no image of it on the homepage).
+const projects: { name: string; category: string; url: string; image: string; live: boolean }[] = [
   {
     name: "Mary Jesse Skin + Scalp Studio",
     category: "Esthetics",
@@ -38,18 +12,23 @@ const projects: { name: string; category: string; url: string; image: string; co
     live: true,
   },
   {
-    name: "Yobejon Beauty",
-    category: "Nail Salon",
-    url: "https://yobejon.forgestudio.one",
-    image: "/images/portfolio/yobejon.jpg",
+    name: "Lumière Med Spa",
+    category: "Med Spa",
+    url: "https://lumiere.forgestudio.one",
+    image: "/images/portfolio/lumiere.avif",
+    live: false,
   },
   {
-    name: "Bake Me Happy",
-    category: "Bakery",
-    url: "https://bakemehappy.forgestudio.one",
-    image: "/images/portfolio/bake-me-happy.jpg",
+    name: "Velvet Nails",
+    category: "Nail Salon",
+    url: "https://velvetnails.forgestudio.one",
+    image: "/images/portfolio/velvet-nails.jpg",
+    live: false,
   },
 ]
+
+const label = (p: { category: string; live: boolean }) =>
+  `${p.category} · ${p.live ? "Live client" : "Sample design"}`
 
 export function Portfolio() {
   const ref = useScrollReveal()
@@ -91,7 +70,7 @@ export function Portfolio() {
             target="_blank"
             rel="noopener noreferrer"
       data-cursor="view"
-            className="group relative block aspect-[3/4] md:aspect-[3.96/6] rounded-2xl overflow-hidden"
+            className="group relative block aspect-[3/4] md:aspect-[4/4.6] rounded-2xl overflow-hidden"
           >
             <div
               className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-105"
@@ -100,7 +79,7 @@ export function Portfolio() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
             <div className="absolute top-3 left-3">
               <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
-                {projects[0].category}{projects[0].concept && " · Concept"}{projects[0].live && " · Live client"}
+                {label(projects[0])}
               </span>
             </div>
             <div className="absolute bottom-6 left-6 right-6">
@@ -119,7 +98,7 @@ export function Portfolio() {
       target="_blank"
       rel="noopener noreferrer"
       data-cursor="view"
-      className="group relative block aspect-[4/3] sm:aspect-[5.8/2.5] rounded-2xl overflow-hidden"
+      className="group relative block aspect-[4/3] md:aspect-auto md:flex-1 rounded-2xl overflow-hidden"
     >
       <div
         className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-105"
@@ -128,7 +107,7 @@ export function Portfolio() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-black/35 saturate-75 brightness-90 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
       <div className="absolute top-3 left-3">
         <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
-          {project.category}{project.concept && " · Concept"}{project.live && " · Live client"}
+          {label(project)}
         </span>
       </div>
       <div className="absolute bottom-5 left-6 right-6">
@@ -138,37 +117,7 @@ export function Portfolio() {
       </div>
     </a>
   ))}
-
-  {/* Bottom row: Sun Snail + Velvet Nails */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-    {projects.slice(3, 5).map((project) => (
-      <a
-        key={project.name}
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
-      data-cursor="view"
-        className="group relative block aspect-[3/3.7] rounded-2xl overflow-hidden"
-      >
-        <div
-          className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-105"
-          style={{ backgroundImage: `url('${project.image}')` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
-        <div className="absolute top-3 left-3">
-          <span className="px-3 py-1 rounded-full text-xs font-sans font-semibold uppercase tracking-wider bg-black/45 backdrop-blur-md text-white">
-            {project.category}{project.concept && " · Concept"}{project.live && " · Live client"}
-          </span>
-        </div>
-        <div className="absolute bottom-5 left-5 right-5">
-          <h3 className="font-serif text-[#F4EFE7] text-2xl md:text-3xl font-bold leading-tight">
-            {project.name}
-          </h3>
-        </div>
-      </a>
-    ))}
-  </div>
-</div>
+          </div>
         </div>
       </div>
     </section>

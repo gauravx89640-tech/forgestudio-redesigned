@@ -3,32 +3,12 @@
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { AnimatedBg } from "./animated-bg"
 
-const testimonials = [
-  {
-    quote:
-      "Finally a website I'm proud to show customers. Professional, fast and great value.",
-    author: "Mila K.",
-    company: "Mila Café",
-  },
-  {
-  quote: "The site is doing great and Sun is very happy with the results. We have already noticed an increase in phone calls since the launch.",
-    author: "Darby Day",
-    company: "Sun's Nail Studio",
-  },
-  {
-    quote:
-      "I was worried it would be complicated but they made everything so easy. Our new site looks incredible.",
-    author: "Sarah Masner",
-    company: "Bloom Bakery",
-  },
-  {
-    quote:
-      "Forge Studio built our site in under a week. We've had more enquiries in the last month than all of last year.",
-    author: "James Rodriguez",
-    company: "Iron & Oak Gym",
-  },
-  
-]
+// Only real client words. Darby's is the one quote cleared for the site.
+const quote = {
+  text: "The site is doing great and Sun is very happy with the results. We have already noticed an increase in phone calls since the launch.",
+  author: "Darby Day",
+  company: "Sun's Nail Studio",
+}
 
 export function Testimonials() {
   const ref = useScrollReveal()
@@ -47,7 +27,7 @@ export function Testimonials() {
         <div className="max-w-7xl mx-auto">
         {/* Tag */}
         <p className="font-sans text-xs tracking-[0.2em] uppercase text-forge-purple-medium mb-3">
-          Testimonials
+          Testimonial
         </p>
 
         {/* Heading */}
@@ -55,47 +35,23 @@ export function Testimonials() {
           id="testimonials-heading"
           className="font-serif text-5xl md:text-6xl font-bold text-forge-purple-strong mb-12 text-balance"
         >
-          What Our Clients Say
+          From a client
         </h2>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div
-              key={t.author}
-              className="rounded-2xl p-8 flex flex-col justify-between gap-6"
-              style={{ backgroundColor: "#1A1A1A", border: "1px solid rgba(255,255,255,0.1)" }}
-            >
-              {/* Stars */}
-              <div className="flex gap-1" aria-label="5 out of 5 stars">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg
-                    key={i}
-                    className="w-4 h-4"
-                    style={{ fill: "#C8A96E" }}
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-
-              <blockquote className="font-serif text-xl font-medium leading-snug flex-1" style={{ color: "#FFFFFF" }}>
-                &ldquo;{t.quote}&rdquo;
-              </blockquote>
-
-              <div>
-                <p className="font-sans text-sm font-semibold" style={{ color: "#FFFFFF" }}>
-                  {t.author}
-                </p>
-                <p className="font-sans text-xs" style={{ color: "#FFFFFF" }}>
-                  {t.company}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <figure className="max-w-4xl">
+          <blockquote className="font-serif text-3xl md:text-5xl leading-tight text-forge-purple-strong text-pretty">
+            &ldquo;{quote.text}&rdquo;
+          </blockquote>
+          <figcaption className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-3">
+            <span className="font-sans text-sm">
+              <span className="font-semibold text-forge-purple-strong">{quote.author}</span>
+              <span className="text-forge-purple-medium">, {quote.company}</span>
+            </span>
+            <a href="/work/suns-nail-studio" className="link-draw font-sans text-sm font-semibold text-forge-purple-strong">
+              Read the case study →
+            </a>
+          </figcaption>
+        </figure>
         </div>
       </section>
     </AnimatedBg>

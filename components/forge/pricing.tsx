@@ -68,7 +68,7 @@ export function Pricing() {
         </h2>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -128,26 +128,6 @@ export function Pricing() {
           ))}
         </div>
 
-        {/* Care plan banner */}
-        <div className="w-full rounded-2xl px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" style={{ backgroundColor: "#FBF7F0", border: "1px solid #D8CBB8" }}>
-          <div>
-            <p className="font-sans text-xs tracking-[0.15em] uppercase text-forge-purple-medium mb-1">
-              Monthly Care Plan
-            </p>
-            <h3 className="font-serif text-2xl font-bold text-forge-purple-strong">
-              Ongoing updates & support — from $99/month
-            </h3>
-          </div>
-          <a
-            href="#contact"
-            className="flex-shrink-0 px-6 py-2.5 rounded-full font-sans font-semibold text-sm text-white transition-colors duration-200"
-            style={{ backgroundColor: "#111111" }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#000000")}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#111111")}
-          >
-            Learn More
-          </a>
-        </div>
         </div>
       </section>
     </AnimatedBg>

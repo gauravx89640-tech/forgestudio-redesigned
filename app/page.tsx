@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/forge/navbar"
 import { Hero } from "@/components/forge/hero"
-import { LogoStrip } from "@/components/forge/logo-strip"
 import { Portfolio } from "@/components/forge/portfolio"
 import { Statement } from "@/components/forge/statement"
 import { HowItWorks } from "@/components/forge/how-it-works"
@@ -16,7 +15,6 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <LogoStrip />
       <Portfolio />
       <Statement />
       <WhyUs />

@@ -91,7 +91,7 @@ export function Hero() {
         key={i}
         className="font-sans text-xs font-semibold tracking-[0.22em] uppercase text-white/75 mx-8"
       >
-        Bloom Bakery · Iron &amp; Oak Gym · Mila Café · Web Design · Fast Delivery · From $549 ·&nbsp;
+        Web Design for Beauty Pros · Suites &amp; Studios · From $549 ·&nbsp;
       </span>
     ))}
   </div>

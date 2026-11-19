@@ -19,11 +19,11 @@ const faqs = [
   },
   {
     q: "What if I want changes after it's built?",
-    a: "One round of revisions is included in every plan. After that, our $99/month care plan covers ongoing updates and changes.",
+    a: "One round of revisions is included in every plan. After launch, your first 30 days of updates are included. After that, each change request is $25, and several small edits sent together count as one request.",
   },
   {
     q: "What do I actually own?",
-    a: "Everything. Your site, your code, and your domain are completely yours. No lock-in contracts, no ongoing fees unless you choose our care plan.",
+    a: "Everything. Once your site is paid in full, the site, its code and your domain are yours. No lock-in contracts, and no monthly fee to keep it running.",
   },
 ]
 

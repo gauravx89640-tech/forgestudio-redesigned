@@ -52,13 +52,10 @@ export function Statement() {
         </h2>
         <a
           href="#contact"
-          className="inline-block px-7 py-3 rounded-full font-sans font-semibold text-sm text-[#F4EFE7] border border-white/70 transition-colors duration-200 mb-5 hover:bg-white/10"
+          className="inline-block px-7 py-3 rounded-full font-sans font-semibold text-sm text-[#F4EFE7] border border-white/70 transition-colors duration-200 hover:bg-white/10"
         >
           Start Your Project
         </a>
-        <span className="font-sans text-xs tracking-wider uppercase" style={{ color: "rgba(255,255,255,0.6)" }}>
-          50+ Websites Launched
-        </span>
       </div>
     </section>
   )
