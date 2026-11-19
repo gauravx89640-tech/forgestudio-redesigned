@@ -11,6 +11,8 @@ const TYPES = [
   { id: "bespoke", label: "Bespoke Serif" },
   { id: "erode", label: "Erode" },
   { id: "sentient", label: "Sentient" },
+  { id: "sharpie", label: "Sharpie + Boska italic" },
+  { id: "clash", label: "Clash Display + Boska italic" },
   { id: "bodoni", label: "Bodoni Moda" },
 ] as const
 

@@ -15,9 +15,14 @@ const caslon = Libre_Caslon_Display({ subsets: ["latin"], weight: "400", variabl
 const caslonText = Libre_Caslon_Text({ subsets: ["latin"], weight: "400", style: ["italic"], variable: "--font-caslon-text", display: "swap" })
 // Fontshare candidates, loaded from Fontshare's stylesheet service for this review page only.
 // Fontshare's stylesheet service returns only the first family per request, so one link each.
-const FONTSHARE = ["zodiak", "boska", "gambetta", "bespoke-serif", "erode", "sentient"].map(
-  (f) => `https://api.fontshare.com/v2/css?f[]=${f}@300,400,300i,400i&display=swap`
-)
+const FONTSHARE = [
+  ...["zodiak", "boska", "gambetta", "bespoke-serif", "erode", "sentient"].map(
+    (f) => `https://api.fontshare.com/v2/css?f[]=${f}@300,400,300i,400i&display=swap`
+  ),
+  // Upright only (no italic exists), so these borrow Boska's italic
+  "https://api.fontshare.com/v2/css?f[]=sharpie@1&display=swap",
+  "https://api.fontshare.com/v2/css?f[]=clash-display@1&display=swap",
+]
 const hanken = Hanken_Grotesk({ subsets: ["latin"], variable: "--font-hanken", display: "swap" })
 
 const nav = [

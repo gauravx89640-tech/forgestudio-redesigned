@@ -25,6 +25,9 @@
 .dir-a[data-type="bespoke"] { --display: "Bespoke Serif", Georgia, serif; --display-weight: 300; }
 .dir-a[data-type="erode"] { --display: "Erode", Georgia, serif; --display-weight: 300; }
 .dir-a[data-type="sentient"] { --display: "Sentient", Georgia, serif; --display-weight: 300; }
+.dir-a[data-type="sharpie"] { --display: "Sharpie", Georgia, serif; --display-weight: 300; --display-italic: "Boska", Georgia, serif; }
+.dir-a[data-type="clash"] { --display: "Clash Display", system-ui, sans-serif; --display-weight: 300; --display-italic: "Boska", Georgia, serif; }
+.dir-a { font-synthesis: none; } /* never fake an italic or bold */
 
 .dir-wrap {
   max-width: 1360px;
