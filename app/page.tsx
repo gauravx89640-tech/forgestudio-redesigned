@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site/footer"
 import { Reveals } from "@/components/site/reveal"
 import { BrowserFrame, Caption, workLinkProps } from "@/components/site/frames"
 import { ContactForm } from "@/components/site/contact-form"
+import { Sketch, Photo, type SketchName } from "@/components/site/sketches"
 import { projects } from "@/lib/work"
 
 export const metadata: Metadata = {
@@ -20,25 +21,34 @@ export const metadata: Metadata = {
   },
 }
 
-const why = [
-  ["You deal with me", "No account managers and no hand-offs. One person, from your first message to launch."],
-  ["Built around how you work", "Your services, your prices, your photos. Happy with your booking system? It stays."],
-  ["Ready in days", "Most sites are live within 5 to 14 days of getting your content and payment."],
-  ["One clear price", "You see the full price before I start. No monthly fee to keep your site running."],
-  ["It's yours", "Once your site is paid in full, the site, its code and your domain are yours. No lock-in."],
-  ["Help after launch", "Your first 30 days of updates are included. After that, each change request is $25."],
+const why: [string, string, SketchName][] = [
+  ["You deal with me", "No account managers and no hand-offs. One person, from your first message to launch.", "talk"],
+  ["Built around how you work", "Your services, your prices, your photos. Happy with your booking system? It stays.", "photos"],
+  ["Ready in days", "Most sites are live within 5 to 14 days of getting your content and payment.", "calendar"],
+  ["One clear price", "You see the full price before I start. No monthly fee to keep your site running.", "tag"],
+  ["It's yours", "Once your site is paid in full, the site, its code and your domain are yours. No lock-in.", "key"],
+  ["Help after launch", "Your first 30 days of updates are included. After that, each change request is $25.", "pencil"],
 ]
 
-const steps = [
-  ["Tell me about your business.", "Send me a note with your business name and what you want your site to do."],
-  ["See it first.", "Sites start at $549. If that works for you, I'll design your homepage so you can see it before you pay anything."],
-  ["Approve it and go live.", "Pay half to start and half on delivery. I finish the site, you review it, and it goes live."],
+const steps: [string, string, SketchName][] = [
+  ["Tell me about your business.", "Send me a note with your business name and what you want your site to do.", "note"],
+  ["See it first.", "Sites start at $549. If that works for you, I'll design your homepage so you can see it before you pay anything.", "preview"],
+  ["Approve it and go live.", "Pay half to start and half on delivery. I finish the site, you review it, and it goes live.", "live"],
 ]
 
 const plans = [
   { name: "Starter", price: "$549", featured: false, features: ["1 page", "Mobile friendly", "Contact form", "5-day delivery"] },
   { name: "Business", price: "$899", featured: true, badge: "Recommended", features: ["Up to 5 pages", "Contact form + Maps", "Basic SEO", "10-day delivery"] },
   { name: "Premium", price: "$1,499", featured: false, features: ["Up to 10 pages", "Custom animations", "Copywriting included", "Priority support", "14-day delivery"] },
+]
+
+// Stock photos (Unsplash licence), one per trade. Atmosphere only, never shown as client work.
+const trades: [name: string, label: string, alt: string][] = [
+  ["hair", "Hair", "A stylist's hand smoothing long blonde hair over a round brush"],
+  ["nails", "Nails", "A nail artist shaping a client's nails at a lamp"],
+  ["lashes", "Lashes & brows", "Lash extensions being placed with fine tweezers"],
+  ["skin", "Skin", "A clay mask being brushed on during a facial"],
+  ["barber", "Barbering", "A barber trimming with thinning shears and a comb"],
 ]
 
 const faqs = [
@@ -120,12 +130,25 @@ export default function Home() {
             </p>
             <a href="#contact" className="s-btn s-btn-solid mt-10">Start your project</a>
           </div>
+
+          <div className="s-strip mt-16 md:mt-24">
+            {trades.map(([name, label, alt], i) => (
+              <figure key={name} className="reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+                <Photo name={name} widths={[800, 480]} ratio="4 / 5" alt={alt} sizes="(min-width: 1024px) 19vw, (min-width: 640px) 38vw, 62vw" />
+                <figcaption>{label}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="s-photo-credit mt-6">Stock photography · Unsplash</p>
         </section>
 
         {/* About */}
         <section id="about" className="s-wrap s-section s-rule" aria-labelledby="about-h2">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <h2 id="about-h2" className="s-h2 md:col-span-5 reveal">Hi, I&apos;m Gaurav.</h2>
+            <div className="md:col-span-5 reveal">
+              <h2 id="about-h2" className="s-h2">Hi, I&apos;m Gaurav.</h2>
+              <Sketch name="studio" className="mt-10 max-w-[300px]" />
+            </div>
             <p className="s-body md:col-span-6 md:col-start-7 md:text-lg md:leading-relaxed reveal">
               I&apos;m the founder of Forge Studio. I design websites for beauty pros and look after their Google and Yelp pages. You&apos;ll deal with me directly, from the first message to launch day and after it. I&apos;ll tell you plainly what will help your business and what won&apos;t.
             </p>
@@ -136,9 +159,12 @@ export default function Home() {
         <section id="why-us" className="s-wrap s-section s-rule" aria-labelledby="why-h2">
           <h2 id="why-h2" className="s-h2 mb-12 md:mb-16">Why work with me</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-            {why.map(([title, body], i) => (
+            {why.map(([title, body, sketch], i) => (
               <div key={title} className="s-cell reveal">
-                <p className="s-num mb-6">{String(i + 1).padStart(2, "0")}</p>
+                <div className="flex items-start justify-between mb-4">
+                  <p className="s-num">{String(i + 1).padStart(2, "0")}</p>
+                  <Sketch name={sketch} className="s-sketch-sm -mt-2" />
+                </div>
                 <h3 className="s-h3 mb-3">{title}</h3>
                 <p className="s-body">{body}</p>
               </div>
@@ -150,9 +176,12 @@ export default function Home() {
         <section id="process" className="s-wrap s-section s-rule" aria-labelledby="how-h2">
           <h2 id="how-h2" className="s-h2 mb-12 md:mb-16">How it works</h2>
           <ol className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
-            {steps.map(([title, body], i) => (
-              <li key={title} className="s-cell reveal">
-                <p className="s-num mb-6">{String(i + 1).padStart(2, "0")}</p>
+            {steps.map(([title, body, sketch], i) => (
+              <li key={title} className="reveal">
+                <div className="s-plate px-6 py-8 mb-6">
+                  <Sketch name={sketch} className="max-w-[300px] mx-auto" />
+                </div>
+                <p className="s-num mb-4">{String(i + 1).padStart(2, "0")}</p>
                 <h3 className="s-h3 mb-3">{title}</h3>
                 <p className="s-body">{body}</p>
               </li>
@@ -204,14 +233,17 @@ export default function Home() {
 
         {/* Local Presence teaser (no price here) */}
         <section className="s-wrap pb-[88px] md:pb-[136px]" aria-labelledby="lp-h2">
-          <div className="s-plate reveal px-6 py-14 md:px-16 md:py-20 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
-            <h2 id="lp-h2" className="s-h2 md:col-span-6">Happy with your website?</h2>
-            <div className="md:col-span-5 md:col-start-8">
+          <div className="s-plate reveal px-6 py-14 md:px-16 md:py-20 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-12 items-center">
+            <div className="md:col-span-7">
+            <h2 id="lp-h2" className="s-h2 mb-8">Happy with your website?</h2>
+            <div className="max-w-[46ch]">
               <p className="s-body mb-6 text-[var(--s-ink)]">
                 I can look after your Google and Yelp pages each month instead, so they stay active and accurate while you work.
               </p>
               <a href="/local-presence" className="s-textlink">See how Local Presence works →</a>
             </div>
+            </div>
+            <Sketch name="listing" className="md:col-span-5 max-w-[340px] mx-auto md:mr-0" />
           </div>
         </section>
 
@@ -239,6 +271,10 @@ export default function Home() {
                 Send me a message and I&apos;ll get back to you within one business day. No pushy sales calls.
               </p>
               <a href="mailto:hello@forgestudio.one" className="s-textlink">hello@forgestudio.one</a>
+              <figure className="reveal hidden md:block mt-14 max-w-[360px]">
+                <Photo name="polish" widths={[1000, 560]} ratio="4 / 5" alt="Rows of nail polish on gold shelves" sizes="360px" />
+                <figcaption className="s-photo-credit mt-3">Stock photography · Unsplash</figcaption>
+              </figure>
             </div>
             <div className="md:col-span-7">
               <ContactForm />

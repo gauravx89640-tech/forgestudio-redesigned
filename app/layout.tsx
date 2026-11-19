@@ -45,7 +45,7 @@ export default function RootLayout({
       <head>
         {/* With JavaScript off, scroll reveals can never fire, so show everything. */}
         <noscript>
-          <style>{".reveal{opacity:1!important;transform:none!important}"}</style>
+          <style>{".reveal,.reveal .fl,.reveal img{opacity:1!important;transform:none!important}.s-sketch .ln{stroke-dashoffset:0!important}"}</style>
         </noscript>
       </head>
       <body className="font-sans antialiased">{children}</body>
