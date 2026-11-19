@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Bodoni_Moda, Libre_Caslon_Display, Hanken_Grotesk } from "next/font/google"
+import { Bodoni_Moda, Libre_Caslon_Display, Libre_Caslon_Text, Hanken_Grotesk } from "next/font/google"
 import { DirectionSwitcher } from "./switcher"
 import "./directions.css"
 
@@ -11,6 +11,13 @@ export const metadata: Metadata = {
 
 const bodoni = Bodoni_Moda({ subsets: ["latin"], style: ["normal", "italic"], axes: ["opsz"], variable: "--font-bodoni", display: "swap" })
 const caslon = Libre_Caslon_Display({ subsets: ["latin"], weight: "400", variable: "--font-caslon", display: "swap" })
+// Libre Caslon Display has no italic, so the italic comes from its companion text cut.
+const caslonText = Libre_Caslon_Text({ subsets: ["latin"], weight: "400", style: ["italic"], variable: "--font-caslon-text", display: "swap" })
+// Fontshare candidates, loaded from Fontshare's stylesheet service for this review page only.
+// Fontshare's stylesheet service returns only the first family per request, so one link each.
+const FONTSHARE = ["zodiak", "boska", "gambetta", "bespoke-serif", "erode", "sentient"].map(
+  (f) => `https://api.fontshare.com/v2/css?f[]=${f}@300,400,300i,400i&display=swap`
+)
 const hanken = Hanken_Grotesk({ subsets: ["latin"], variable: "--font-hanken", display: "swap" })
 
 const nav = [
@@ -22,10 +29,11 @@ const nav = [
 
 export default function Directions() {
   return (
-    <div className={`dir-a ${bodoni.variable} ${caslon.variable} ${hanken.variable}`} data-type="bodoni">
+    <div className={`dir-a ${bodoni.variable} ${caslon.variable} ${caslonText.variable} ${hanken.variable}`} data-type="caslon">
+      {FONTSHARE.map((href) => <link key={href} rel="stylesheet" href={href} precedence="default" />)}
       <header className="dir-wrap flex items-center justify-between h-16 md:h-20">
         <a href="/" className="dir-wordmark" aria-label="Forge Studio, home">
-          F<i>o</i>RGE <span className="dir-wordmark-studio">Studio</span>
+          F<i>O</i>RGE <span className="dir-wordmark-studio">Studio</span>
         </a>
         <nav aria-label="Main" className="hidden md:flex items-center gap-8">
           {nav.map((l) => (

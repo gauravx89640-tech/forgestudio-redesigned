@@ -2,15 +2,20 @@
 
 import { useEffect, useState } from "react"
 
-// Review-only control: switch the display face on the bake-off page. ?type=bodoni|caslon|newsreader
+// Review-only control: switch the display face on the bake-off page. ?type=caslon|zodiak|boska|…
 const TYPES = [
-  { id: "bodoni", label: "Bodoni Moda" },
   { id: "caslon", label: "Libre Caslon" },
-  { id: "newsreader", label: "Newsreader (current)" },
+  { id: "zodiak", label: "Zodiak" },
+  { id: "boska", label: "Boska" },
+  { id: "gambetta", label: "Gambetta" },
+  { id: "bespoke", label: "Bespoke Serif" },
+  { id: "erode", label: "Erode" },
+  { id: "sentient", label: "Sentient" },
+  { id: "bodoni", label: "Bodoni Moda" },
 ] as const
 
 export function DirectionSwitcher() {
-  const [type, setType] = useState<string>("bodoni")
+  const [type, setType] = useState<string>("caslon")
   const [open, setOpen] = useState(true)
 
   useEffect(() => {

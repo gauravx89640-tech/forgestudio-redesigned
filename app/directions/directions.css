@@ -17,8 +17,14 @@
   font-family: var(--text);
   padding-bottom: 64px;
 }
-.dir-a[data-type="caslon"] { --display: var(--font-caslon), Georgia, serif; }
-.dir-a[data-type="newsreader"] { --display: var(--font-newsreader), Georgia, serif; }
+.dir-a { --display-italic: var(--display); --display-weight: 400; }
+.dir-a[data-type="caslon"] { --display: var(--font-caslon), Georgia, serif; --display-italic: var(--font-caslon-text), Georgia, serif; }
+.dir-a[data-type="zodiak"] { --display: "Zodiak", Georgia, serif; --display-weight: 300; }
+.dir-a[data-type="boska"] { --display: "Boska", Georgia, serif; --display-weight: 300; }
+.dir-a[data-type="gambetta"] { --display: "Gambetta", Georgia, serif; --display-weight: 300; }
+.dir-a[data-type="bespoke"] { --display: "Bespoke Serif", Georgia, serif; --display-weight: 300; }
+.dir-a[data-type="erode"] { --display: "Erode", Georgia, serif; --display-weight: 300; }
+.dir-a[data-type="sentient"] { --display: "Sentient", Georgia, serif; --display-weight: 300; }
 
 .dir-wrap {
   max-width: 1360px;
@@ -40,9 +46,8 @@
   white-space: nowrap;
 }
 .dir-wordmark i {
+  font-family: var(--display-italic);
   font-style: italic;
-  text-transform: none;
-  letter-spacing: 0.2em;
 }
 .dir-wordmark-studio {
   font-family: var(--text);
@@ -77,13 +82,13 @@
 
 .dir-display {
   font-family: var(--display);
-  font-weight: 400;
+  font-weight: var(--display-weight);
   font-size: clamp(44px, 7.4vw, 112px);
   line-height: 0.98;
   letter-spacing: -0.015em;
   text-wrap: balance;
 }
-.dir-display em { font-style: italic; }
+.dir-display em { font-family: var(--display-italic); font-style: italic; }
 .dir-a[data-type="caslon"] .dir-display { letter-spacing: -0.01em; }
 
 .dir-sub {
