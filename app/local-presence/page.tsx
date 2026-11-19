@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { SiteHeader } from "@/components/site/header"
 import { SiteFooter } from "@/components/site/footer"
 import { Reveals } from "@/components/site/reveal"
+import { Sketch, Photo, type SketchName } from "@/components/site/sketches"
 
 const TITLE = "Local Presence · Google and Yelp Care for Beauty Pros"
 const DESCRIPTION = "Your Google and Yelp pages, looked after every month. From $125 a month. Cancel with 30 days' notice."
@@ -51,10 +52,10 @@ const why = [
   "An answered review, glowing or critical, tells the next person reading that someone is paying attention.",
 ]
 
-const steps = [
-  ["Ask for a sample week.", "I'll write a sample post from your own photos, draft replies to your latest unanswered reviews, and list the fixes your profile needs. It's yours to use either way."],
-  ["Add me as a manager.", "You add me as a manager on Google and invite me on Yelp. I never ask for your password, and you can remove me at any time."],
-  ["I take it from here.", "I record your starting numbers, tell you about every change I make, and send you a report each month."],
+const steps: [string, string, SketchName][] = [
+  ["Ask for a sample week.", "I'll write a sample post from your own photos, draft replies to your latest unanswered reviews, and list the fixes your profile needs. It's yours to use either way.", "sample"],
+  ["Add me as a manager.", "You add me as a manager on Google and invite me on Yelp. I never ask for your password, and you can remove me at any time.", "manager"],
+  ["I take it from here.", "I record your starting numbers, tell you about every change I make, and send you a report each month.", "report"],
 ]
 
 const faqs = [
@@ -108,6 +109,11 @@ export default function LocalPresencePage() {
               </div>
             </div>
           </div>
+
+          <figure className="reveal mt-12 md:mt-16">
+            <Photo name="shelves" widths={[1800, 900]} ratio="16 / 9" alt="Calm salon shelves with a few product bottles" sizes="(min-width: 1360px) 1320px, 100vw" className="max-h-[560px] w-full" />
+            <figcaption className="s-photo-credit mt-3">Stock photography · Unsplash</figcaption>
+          </figure>
         </section>
 
         {/* How it brings you more leads */}
@@ -118,6 +124,7 @@ export default function LocalPresencePage() {
               <p className="s-body md:text-lg md:leading-relaxed text-[var(--s-ink)]">
                 An active, accurate profile with answered reviews gives more of the people who find you a reason to get in touch. Here&apos;s why:
               </p>
+              <Sketch name="listing" className="mt-10 max-w-[320px]" />
             </div>
             <div className="md:col-span-6 md:col-start-7 reveal">
               <ol className="flex flex-col">
@@ -173,9 +180,12 @@ export default function LocalPresencePage() {
         <section className="s-wrap s-section s-rule" aria-labelledby="start-h2">
           <h2 id="start-h2" className="s-h2 mb-12 md:mb-16">How it starts</h2>
           <ol className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
-            {steps.map(([title, body], i) => (
-              <li key={title} className="s-cell reveal">
-                <p className="s-num mb-6">{String(i + 1).padStart(2, "0")}</p>
+            {steps.map(([title, body, sketch], i) => (
+              <li key={title} className="reveal">
+                <div className="s-plate px-6 py-8 mb-6">
+                  <Sketch name={sketch} className="max-w-[300px] mx-auto" />
+                </div>
+                <p className="s-num mb-4">{String(i + 1).padStart(2, "0")}</p>
                 <h3 className="s-h3 mb-3">{title}</h3>
                 <p className="s-body">{body}</p>
               </li>
