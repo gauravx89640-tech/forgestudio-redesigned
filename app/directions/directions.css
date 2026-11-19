@@ -1,0 +1,227 @@
+/* Direction A · The Gallery. Warm white ground, one thin high-contrast display face,
+   wide tracked capitals, square buttons. The work is the hero. */
+
+/* Inside a layer so Tailwind utilities (md:hidden etc.) still win */
+@layer components {
+.dir-a {
+  --ground: #f9f6f1;
+  --plate: #efe6dd;
+  --ink: #1c1814;
+  --muted: #6e645b;
+  --hair: #e3d9cd;
+  --display: var(--font-bodoni), "Didot", Georgia, serif;
+  --text: var(--font-hanken), system-ui, sans-serif;
+  min-height: 100svh;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--text);
+  padding-bottom: 64px;
+}
+.dir-a[data-type="caslon"] { --display: var(--font-caslon), Georgia, serif; }
+.dir-a[data-type="newsreader"] { --display: var(--font-newsreader), Georgia, serif; }
+
+.dir-wrap {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media (min-width: 768px) {
+  .dir-wrap { padding-left: 40px; padding-right: 40px; }
+}
+
+/* Wordmark: tracked capitals with one italic letter mixed in */
+.dir-wordmark {
+  font-family: var(--display);
+  font-size: 17px;
+  letter-spacing: 0.24em;
+  color: var(--ink);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.dir-wordmark i {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.2em;
+}
+.dir-wordmark-studio {
+  font-family: var(--text);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--muted);
+  margin-left: 6px;
+  vertical-align: 2px;
+}
+
+.dir-navlink {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 3px;
+  transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dir-navlink:hover,
+.dir-navlink:focus-visible { background-size: 100% 1px; }
+
+.dir-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dir-display {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(44px, 7.4vw, 112px);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.dir-display em { font-style: italic; }
+.dir-a[data-type="caslon"] .dir-display { letter-spacing: -0.01em; }
+
+.dir-sub {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 34ch;
+}
+@media (min-width: 768px) { .dir-sub { font-size: 16px; } }
+
+/* Square buttons */
+.dir-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+.dir-btn-solid { background: var(--ink); color: var(--ground); }
+.dir-btn-solid:hover { background: #3a332c; border-color: #3a332c; }
+.dir-btn-outline { background: transparent; color: var(--ink); }
+.dir-btn-outline:hover { background: var(--ink); color: var(--ground); }
+.dir-btn-sm { min-height: 38px; padding: 0 14px; font-size: 10px; }
+.dir-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* The work, framed on a quiet plate */
+.dir-plate {
+  position: relative;
+  background: var(--plate);
+  padding: 28px 18px 56px;
+}
+@media (min-width: 768px) {
+  .dir-plate { padding: 64px 14% 88px 7%; }
+}
+
+.dir-frame {
+  display: block;
+  background: #fff;
+  box-shadow: 0 1px 0 var(--hair), 0 24px 60px -30px rgba(40, 28, 18, 0.35);
+}
+.dir-frame img { display: block; width: 100%; height: auto; }
+.dir-frame-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 22px;
+  padding: 0 10px;
+  background: #fbf9f6;
+  border-bottom: 1px solid var(--hair);
+}
+.dir-frame-bar i { width: 6px; height: 6px; border-radius: 50%; background: var(--hair); }
+.dir-frame-bar b {
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* Phone view layered over the lower-right corner, inside the plate */
+.dir-frame-phone {
+  position: absolute;
+  right: 10px;
+  bottom: 18px;
+  width: 26%;
+  max-width: 230px;
+  border: 5px solid var(--ink);
+  border-radius: 18px;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .dir-frame-phone { right: 5%; bottom: 40px; width: 17%; border-width: 7px; border-radius: 26px; }
+}
+
+/* Figure caption, set small like a gallery label */
+.dir-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 18px;
+  padding-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+.dir-caption-muted { color: var(--muted); }
+.dir-tag {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  padding: 3px 8px;
+}
+
+/* Motion: the plate settles in. Text never animates, so the promise is there at once. */
+@media (prefers-reduced-motion: no-preference) {
+  .dir-figure .dir-frame-desktop { animation: dir-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+  .dir-figure .dir-frame-phone { animation: dir-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
+}
+@keyframes dir-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Review controls (not part of the design) */
+.dir-switcher {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 36px 10px 12px;
+  background: rgba(28, 24, 20, 0.92);
+  color: #f4efe7;
+  font: 500 11px/1.2 system-ui, sans-serif;
+  border-radius: 8px;
+}
+@media (min-width: 768px) { .dir-switcher { left: auto; max-width: 520px; } }
+.dir-switcher-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.dir-switcher-k { width: 62px; opacity: 0.6; }
+.dir-switcher button {
+  padding: 5px 8px;
+  border: 1px solid rgba(244, 239, 231, 0.3);
+  border-radius: 4px;
+  color: inherit;
+}
+.dir-switcher button[aria-pressed="true"] { background: #f4efe7; color: #1c1814; }
+.dir-switcher button:disabled { opacity: 0.4; cursor: not-allowed; }
+.dir-switcher .dir-switcher-hide { position: absolute; top: 6px; right: 6px; border: 0; font-size: 16px; padding: 2px 8px; }
+
+}
