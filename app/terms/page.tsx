@@ -4,15 +4,16 @@ import { LegalPage } from "@/components/forge/legal-page"
 export const metadata: Metadata = {
   title: "Terms of Service | Forge Studio",
   description: "The terms that apply when you work with Forge Studio.",
-  alternates: { canonical: "https://forgestudio.one/terms" },
+  alternates: { canonical: "/terms" },
+  openGraph: { title: "Terms of Service | Forge Studio", url: "/terms", images: [{ url: "/og/home.png", width: 1200, height: 630, alt: "Forge Studio" }] },
 }
 
 export default function TermsPage() {
   return (
     <LegalPage
       title="Terms of Service"
-      updated="November 12, 2026"
-      intro="These terms apply to website projects with Forge Studio. Your written proposal sets out the specifics of your project; if it and these terms ever differ, the proposal wins."
+      updated="November 19, 2026"
+      intro="These terms apply to website projects and Local Presence plans with Forge Studio. Your written proposal sets out the specifics of your project; if it and these terms ever differ, the proposal wins."
       sections={[
         {
           heading: "Your proposal",
@@ -29,7 +30,13 @@ export default function TermsPage() {
         {
           heading: "Revisions and later changes",
           body: [
-            "One round of revisions is included in every plan. Changes after that, and anything outside the agreed scope, are quoted separately before we start them.",
+            "One round of revisions is included in every plan. After launch, your first 30 days of updates are included. After that, each change request is $25, and several small edits sent together count as one request. New pages or features are quoted before we start them.",
+          ],
+        },
+        {
+          heading: "Local Presence plans",
+          body: [
+            "Your Google Business Profile itself is free; the monthly fee is for our work managing it, and it appears on every invoice. You stay the owner of your profiles and add us as a manager. We never ask for your password. Review replies on Google are posted only with your approval. Either side can end the plan with 30 days' notice. When it ends, we hand everything back and remove our access within 7 business days. We can't guarantee rankings or appearing in Search or Maps.",
           ],
         },
         {

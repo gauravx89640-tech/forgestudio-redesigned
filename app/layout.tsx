@@ -1,29 +1,38 @@
-import type { Metadata } from 'next'
-import { Newsreader, Inter } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
+import type { Metadata, Viewport } from 'next'
+import localFont from 'next/font/local'
+import { Hanken_Grotesk } from 'next/font/google'
 import './globals.css'
-import { ScrollProgress } from '@/components/forge/scroll-progress'
-import { ViewCursor } from '@/components/forge/view-cursor'
+import './site.css'
 
-// Headline font. Optical sizing gives large headings the finer display cut automatically.
-const newsreader = Newsreader({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  axes: ['opsz'],
-  variable: '--font-newsreader',
+// Display face: Zodiak (Indian Type Foundry, via Fontshare, free licence), self-hosted.
+const zodiak = localFont({
+  src: [
+    { path: './fonts/Zodiak-Light.woff2', weight: '300', style: 'normal' },
+    { path: './fonts/Zodiak-LightItalic.woff2', weight: '300', style: 'italic' },
+    { path: './fonts/Zodiak-Regular.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/Zodiak-Italic.woff2', weight: '400', style: 'italic' },
+  ],
+  variable: '--font-zodiak',
   display: 'swap',
 })
 
-const inter = Inter({
+const hanken = Hanken_Grotesk({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-hanken',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Forge Studio — Web Design for Local Businesses',
-  description: 'Clean, modern websites for cafés, bakeries, gyms and local businesses — starting from $549. Built fast, built to convert.',
-  generator: 'v0.app',
+  metadataBase: new URL('https://forgestudio.one'),
+  title: 'Forge Studio · Websites for Beauty Pros',
+  description:
+    'Websites for hair stylists, nail artists, lash and brow artists, estheticians and barbers in suites and studios. Sites start at $549.',
+  openGraph: { siteName: 'Forge Studio', type: 'website', locale: 'en_US' },
+  twitter: { card: 'summary_large_image' },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#f9f6f1',
 }
 
 export default function RootLayout({
@@ -32,19 +41,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${newsreader.variable} ${inter.variable} bg-forge-dark`}>
+    <html lang="en" className={`${zodiak.variable} ${hanken.variable}`}>
       <head>
         {/* With JavaScript off, scroll reveals can never fire, so show everything. */}
         <noscript>
-          <style>{".scroll-reveal,.project-card,.scroll-reveal h2{opacity:1!important;transform:none!important;clip-path:none!important}"}</style>
+          <style>{".reveal{opacity:1!important;transform:none!important}"}</style>
         </noscript>
       </head>
-      <body className="font-sans antialiased">
-        <ScrollProgress />
-        {children}
-        <ViewCursor />
-        {process.env.NODE_ENV === 'production' && <Analytics />}
-      </body>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   )
 }

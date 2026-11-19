@@ -8,14 +8,14 @@ const whatWeBuilt = [
   "A five-page website — Home, Services, Gallery, About, Contact — built mobile-first",
   "Her full service menu and real photos of her work, framed for a private-studio feel",
   "Her existing Square booking link kept exactly as-is, so clients can book online any time of day",
-  "Local SEO and a mobile-forward build, so she shows up — and looks great — when new clients search for a nail studio in Wilmington from their phone",
+  "Local SEO, so she can be found when people search for a nail studio in Wilmington",
   "Live in 10 days from deposit",
 ]
 
 function CtaBlock({ heading }: { heading: string }) {
   return (
     <div className="max-w-3xl mx-auto text-center">
-      <h2 className="font-serif text-3xl md:text-5xl font-bold text-forge-purple-strong mb-8 text-balance">
+      <h2 className="font-serif text-3xl md:text-5xl font-light text-forge-purple-strong mb-8 text-balance">
         {heading}
       </h2>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -23,13 +23,13 @@ function CtaBlock({ heading }: { heading: string }) {
           href="https://sunsnailstudio.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-7 py-3 rounded-full font-sans font-semibold text-sm border border-forge-purple-strong text-forge-purple-strong hover:bg-forge-purple-strong hover:text-white transition-colors duration-200"
+          className="px-7 py-3 rounded-none font-sans font-semibold text-sm border border-forge-purple-strong text-forge-purple-strong hover:bg-forge-purple-strong hover:text-white transition-colors duration-200"
         >
           See the live site →
         </a>
         <a
           href="/#contact"
-          className="px-7 py-3 rounded-full font-sans font-semibold text-sm bg-forge-purple-strong text-white hover:bg-forge-purple-strong/85 transition-colors duration-200"
+          className="px-7 py-3 rounded-none font-sans font-semibold text-sm bg-forge-purple-strong text-white hover:bg-forge-purple-strong/85 transition-colors duration-200"
         >
           Let&apos;s build yours →
         </a>
@@ -52,13 +52,13 @@ export function CaseStudyBody() {
       {/* Hero */}
       <section
         ref={heroRef}
-        className="scroll-reveal w-full bg-forge-lavender pt-36 pb-16 px-6 md:px-12"
+        className="scroll-reveal w-full bg-forge-lavender pt-12 md:pt-20 pb-16 px-6 md:px-12"
       >
         <div className="max-w-5xl mx-auto">
           <p className="font-sans text-xs tracking-[0.2em] uppercase text-forge-purple-medium mb-3">
             Case Study
           </p>
-          <h1 className="font-serif text-4xl md:text-6xl font-bold text-forge-purple-strong mb-6 text-balance">
+          <h1 className="font-serif text-4xl md:text-6xl font-normal text-forge-purple-strong mb-6 text-balance">
             More weekend bookings — and a studio clients can finally find
             online
           </h1>
@@ -136,7 +136,7 @@ export function CaseStudyBody() {
       {/* Context + Problem */}
       <section
         ref={contextRef}
-        className="scroll-reveal w-full py-20 px-6 md:px-12 border-b border-[#D8CBB8]/80 bg-[#EEE6DA]"
+        className="scroll-reveal w-full py-20 px-6 md:px-12 border-b border-forge-divider bg-forge-lavender"
       >
         <div className="max-w-3xl mx-auto grid grid-cols-1 gap-14">
           <div>
@@ -166,14 +166,14 @@ export function CaseStudyBody() {
         </div>
       </section>
 
-      {/* What We Built */}
+      {/* What I Built */}
       <section
         ref={builtRef}
         className="scroll-reveal w-full py-20 px-6 md:px-12 bg-forge-lavender"
       >
         <div className="max-w-3xl mx-auto">
           <p className="font-sans text-xs tracking-[0.2em] uppercase text-forge-purple-medium mb-3">
-            What We Built
+            What I Built
           </p>
           <ul className="flex flex-col gap-5">
             {whatWeBuilt.map((item) => (
@@ -202,7 +202,7 @@ export function CaseStudyBody() {
       {/* Mid-page CTA */}
       <section
         ref={ctaMidRef}
-        className="scroll-reveal w-full py-20 px-6 md:px-12 border-y border-[#D8CBB8]/80 bg-[#EEE6DA]"
+        className="scroll-reveal w-full py-20 px-6 md:px-12 border-y border-forge-divider bg-forge-lavender"
       >
         <CtaBlock heading="Run a business people love, with a website that doesn't show it?" />
       </section>
@@ -261,7 +261,7 @@ export function CaseStudyBody() {
         ref={ctaEndRef}
         className="scroll-reveal w-full py-24 px-6 md:px-12 bg-forge-lavender"
       >
-        <CtaBlock heading="Want results like Sun's for your business?" />
+        <CtaBlock heading="Want a site like Sun's?" />
       </section>
     </>
   )

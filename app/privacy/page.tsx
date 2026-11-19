@@ -4,14 +4,15 @@ import { LegalPage } from "@/components/forge/legal-page"
 export const metadata: Metadata = {
   title: "Privacy Policy | Forge Studio",
   description: "How Forge Studio handles the information you share with us.",
-  alternates: { canonical: "https://forgestudio.one/privacy" },
+  alternates: { canonical: "/privacy" },
+  openGraph: { title: "Privacy Policy | Forge Studio", url: "/privacy", images: [{ url: "/og/home.png", width: 1200, height: 630, alt: "Forge Studio" }] },
 }
 
 export default function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      updated="November 12, 2026"
+      updated="November 19, 2026"
       intro="Forge Studio designs and builds websites for small businesses. This page explains what information we collect through forgestudio.one, why, and what we do with it."
       sections={[
         {
@@ -31,7 +32,7 @@ export default function PrivacyPage() {
         {
           heading: "Who else sees it",
           body: [
-            "Only the services we need to run the business: our email provider, our hosting provider, and — if you become a client — the payment provider you pay through. Each handles data under its own privacy policy.",
+            "Only the services we need to run the business: our email provider, our hosting provider, our form provider (Web3Forms), and — if you become a client — the payment provider you pay through. Each handles data under its own privacy policy.",
           ],
         },
         {
