@@ -8,6 +8,8 @@ const nextConfig = {
   turbopack: {
     root: path.dirname(fileURLToPath(import.meta.url)),
   },
+  // No floating dev badge (it also showed up in screenshots and share images).
+  devIndicators: false,
   typescript: {
     ignoreBuildErrors: true,
   },
