@@ -51,7 +51,7 @@ const faqs = [
 ]
 
 export default function Home() {
-  const { mary, lumiere, velvet } = projects
+  const { mary, maui, victoria, alyzel, lumiere } = projects
 
   return (
     <>
@@ -99,26 +99,16 @@ export default function Home() {
             <a href="/portfolio" className="s-btn s-btn-outline self-start sm:self-auto">See all work</a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-14">
-            <a {...workLinkProps(mary)} className="s-work-card reveal md:col-span-7 block">
-              <span className="s-plate flex items-center justify-center aspect-[4/5] md:aspect-[6/7] py-10">
-                <span className="s-phone block w-[52%] max-w-[340px]">
-                  <img src="/images/work/mary-phone.webp" width={780} height={1560} alt={`${mary.name} on a phone`} loading="lazy" decoding="async" />
+          {/* Mary is Fig. 1 in the hero, so the grid carries on from Fig. 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-14">
+            {[maui, victoria, alyzel, lumiere].map((p, i) => (
+              <a key={p.slug} {...workLinkProps(p)} className="s-work-card reveal block">
+                <span className="s-plate block p-5 md:p-10">
+                  <BrowserFrame project={p} sizes="(min-width: 768px) 44vw, 92vw" />
                 </span>
-              </span>
-              <Caption project={mary} fig={2} blurb />
-            </a>
-
-            <div className="md:col-span-5 flex flex-col gap-14">
-              {[lumiere, velvet].map((p, i) => (
-                <a key={p.slug} {...workLinkProps(p)} className="s-work-card reveal block">
-                  <span className="s-plate block p-5 md:p-8">
-                    <BrowserFrame project={p} sizes="(min-width: 768px) 38vw, 92vw" />
-                  </span>
-                  <Caption project={p} fig={3 + i} blurb />
-                </a>
-              ))}
-            </div>
+                <Caption project={p} fig={2 + i} blurb />
+              </a>
+            ))}
           </div>
         </section>
 

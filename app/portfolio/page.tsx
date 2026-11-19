@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 }
 
 // Live clients first (Mary, then Sun's), then sample designs.
-const order = [projects.mary, projects.suns, projects.lumiere, projects.velvet]
+const order = [projects.mary, projects.suns, projects.maui, projects.victoria, projects.alyzel, projects.lumiere, projects.velvet]
 
 export default function PortfolioPage() {
   return (
@@ -34,9 +34,11 @@ export default function PortfolioPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
             {order.map((p, i) => (
-              <a key={p.slug} {...workLinkProps(p)} className="s-work-card reveal block">
+              <a key={p.slug} {...workLinkProps(p)} className={`s-work-card reveal block ${i === 0 ? "md:col-span-2" : ""}`}>
                 <span className="s-plate block p-5 md:p-10">
-                  <BrowserFrame project={p} sizes="(min-width: 768px) 44vw, 92vw" priority={i === 0} />
+                  <span className={`block ${i === 0 ? "md:w-[78%] md:mx-auto" : ""}`}>
+                    <BrowserFrame project={p} sizes={i === 0 ? "(min-width: 768px) 70vw, 92vw" : "(min-width: 768px) 44vw, 92vw"} priority={i === 0} />
+                  </span>
                 </span>
                 <Caption project={p} fig={i + 1} blurb />
               </a>
